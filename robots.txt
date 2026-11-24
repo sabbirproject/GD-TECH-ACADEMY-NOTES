@@ -5,4 +5,4 @@ Disallow: /dashboard.html
 Disallow: /reader.html
 
 # Replace the URL below with your real GitHub Pages address
-Sitemap: https://YOUR-USERNAME.github.io/GD-TECH-ACADEMY-NOTES/sitemap.xml
+Sitemap: https://sabbirproject.github.io/GD-TECH-ACADEMY-NOTES/sitemap.xml
