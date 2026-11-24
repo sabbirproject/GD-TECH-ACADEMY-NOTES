@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Library – GD TECH ACADEMY</title>
+<meta name="description" content="Your generated notes, saved notes, recently viewed notes, download history and account settings.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:28px">
+  <div class="container">
+    <div id="gate" class="center" style="padding:40px 0"><span class="spinner"></span> Loading…</div>
+    <div id="app" hidden>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h1 style="font-size:1.7rem;margin:0">My Library</h1>
+        <a class="btn accent" href="notes.html">✦ Create new notes</a>
+      </div>
+      <div id="notice"></div>
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" data-tab="all" aria-selected="true">My Notes</button>
+        <button class="tab" role="tab" data-tab="saved" aria-selected="false">Saved</button>
+        <button class="tab" role="tab" data-tab="recent" aria-selected="false">Recently Viewed</button>
+        <button class="tab" role="tab" data-tab="downloads" aria-selected="false">Download History</button>
+        <button class="tab" role="tab" data-tab="account" aria-selected="false">Account Settings</button>
+      </div>
+
+      <section id="paneNotes">
+        <div class="card" style="margin-bottom:16px">
+          <div class="row three">
+            <div><label for="fq" class="sr-only">Search notes</label><input type="search" id="fq" placeholder="Search my notes…"></div>
+            <div><label for="fs" class="sr-only">Filter by subject</label><select id="fs"><option value="">All subjects</option></select></div>
+            <div><label for="fl" class="sr-only">Filter by language</label><select id="fl"><option value="">All languages</option></select></div>
+          </div>
+        </div>
+        <div id="list" class="grid cols-3"></div>
+        <p id="empty" class="center muted" hidden style="padding:30px 0">No notes here yet. <a href="notes.html">Create your first notes</a>.</p>
+      </section>
+
+      <section id="paneDownloads" hidden>
+        <div class="card"><div class="table-wrap"><table class="data-table"><thead><tr><th>When</th><th>Notes</th><th>Type</th></tr></thead><tbody id="dlBody"></tbody></table></div><p id="dlEmpty" class="muted center" hidden>No downloads yet.</p></div>
+      </section>
+
+      <section id="paneAccount" hidden>
+        <div class="grid cols-2">
+          <div class="card"><h3>Profile</h3>
+            <p class="muted small" id="acctInfo"></p>
+            <form id="profileForm"><div class="field"><label for="pName">Name</label><input id="pName" type="text" maxlength="60"></div><button class="btn" type="submit">Save name</button></form>
+          </div>
+          <div class="card" id="pwCard"><h3>Change password</h3>
+            <form id="pwForm"><div class="field"><label for="pOld">Current password</label><input id="pOld" type="password" autocomplete="current-password" maxlength="100"></div>
+            <div class="field"><label for="pNew">New password</label><input id="pNew" type="password" autocomplete="new-password" maxlength="100"><div class="hint">At least 8 characters with a letter and a number.</div></div>
+            <button class="btn" type="submit">Change password</button></form>
+          </div>
+          <div class="card"><h3>Usage today</h3><p id="usage" class="muted"></p><div class="progress"><i id="usageBar"></i></div></div>
+          <div class="card"><h3>Session</h3><p class="muted small">Signing out removes your session from this device. Your notes stay saved.</p><button class="btn secondary" id="logoutBtn">Sign out</button></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

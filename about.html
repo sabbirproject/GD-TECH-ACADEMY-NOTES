@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us – GD TECH ACADEMY</title>
+<meta name="description" content="About GD TECH ACADEMY (Gyaan Ka Dabba): educational technology, computer application training, hardware and basic networking education.">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:title" content="About Us – GD TECH ACADEMY">
+<meta property="og:description" content="About GD TECH ACADEMY (Gyaan Ka Dabba): educational technology, computer application training, hardware and basic networking education.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:30px">
+  <div class="container narrow">
+    <h1>About GD TECH ACADEMY</h1>
+    <p class="lead" style="text-align:left;margin-left:0" id="tag"></p>
+    <div class="card">
+      <p id="aboutText"></p>
+      <h3>What we focus on</h3>
+      <ul>
+        <li>Educational technology</li>
+        <li>Computer application training</li>
+        <li>Hardware and basic networking education</li>
+        <li>Digital learning resources</li>
+        <li>Beginner-friendly educational content</li>
+      </ul>
+      <p><strong>GD</strong> stands for <strong>Gyaan Ka Dabba</strong>.</p>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Owner / Proprietor</h3>
+      <p id="owner"></p>
+      <ul id="links"></ul>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>About this app</h3>
+      <p>The AI Notes Generator turns a topic, chapter name or pasted text into organised study notes with definitions, examples, tables, diagrams, summaries, a glossary, practice questions and MCQs, in the language and level you choose.</p>
+      <p class="muted small">It runs on free services (GitHub Pages, Google Apps Script, Google Sheets and Google Drive). Free AI quotas are limited, so daily limits apply.</p>
+      <p><a class="btn" href="notes.html">✦ Create Notes</a></p>
+    </div>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script>
+GD.init({ page: 'about' }).then(function (cfg) { fill(cfg); }); fill(GD.cfg);
+function fill(cfg) {
+  var s = cfg.site;
+  document.getElementById('tag').textContent = s.tagline;
+  document.getElementById('aboutText').textContent = s.about;
+  document.getElementById('owner').innerHTML = 'Proprietor: <strong>' + GD.esc(s.owner) + '</strong>' + (s.socialHandle ? '<br>Social media: <strong>' + GD.esc(s.socialHandle) + '</strong>' : '');
+  document.getElementById('links').innerHTML = '<li>Academy website: <a href="' + GD.esc(s.brandUrl) + '" target="_blank" rel="noopener noreferrer">' + GD.esc(s.brandUrl) + '</a></li><li>Owner website: <a href="' + GD.esc(s.ownerUrl) + '" target="_blank" rel="noopener noreferrer">' + GD.esc(s.ownerUrl) + '</a></li>';
+}
+</script>
+</body>
+</html>

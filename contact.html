@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us – GD TECH ACADEMY</title>
+<meta name="description" content="Contact GD TECH ACADEMY with questions, feedback or suggestions about the AI Notes Generator.">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:title" content="Contact Us – GD TECH ACADEMY">
+<meta property="og:description" content="Contact GD TECH ACADEMY with questions, feedback or suggestions about the AI Notes Generator.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:30px">
+  <div class="container narrow">
+    <h1>Contact Us</h1>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Send a message</h3>
+        <form id="cf" novalidate>
+          <div class="field"><label for="cName">Your name</label><input id="cName" type="text" maxlength="60" autocomplete="name"></div>
+          <div class="field"><label for="cEmail">Email (optional, if you want a reply)</label><input id="cEmail" type="email" maxlength="120" autocomplete="email"></div>
+          <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" maxlength="1000"></textarea></div>
+          <div id="cErr" role="alert"></div>
+          <button class="btn" type="submit" id="cBtn">Send message</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Contact details</h3>
+        <ul id="details" style="padding-left:1.1em"></ul>
+        <p class="small muted">Only verified contact details set by the administrator are shown here.</p>
+      </div>
+    </div>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script>
+GD.init({ page: 'contact' }).then(fill); fill(GD.cfg);
+function fill(cfg) {
+  var s = cfg.site, h = '';
+  if (s.contactEmail) h += '<li>Email: <a href="mailto:' + GD.esc(s.contactEmail) + '">' + GD.esc(s.contactEmail) + '</a></li>';
+  if (s.contactPhone) h += '<li>Phone: ' + GD.esc(s.contactPhone) + '</li>';
+  if (s.contactAddress) h += '<li>Address: ' + GD.esc(s.contactAddress) + '</li>';
+  h += '<li>Website: <a href="' + GD.esc(s.brandUrl) + '" target="_blank" rel="noopener noreferrer">' + GD.esc(s.brandUrl.replace('https://', '')) + '</a></li>';
+  if (s.socialHandle) h += '<li>Social media: ' + GD.esc(s.socialHandle) + '</li>';
+  document.getElementById('details').innerHTML = h;
+}
+document.getElementById('cf').onsubmit = function (e) {
+  e.preventDefault();
+  var err = document.getElementById('cErr'), btn = document.getElementById('cBtn');
+  var msg = document.getElementById('cMsg').value.trim();
+  if (msg.length < 3) { err.innerHTML = '<div class="alert error">Please write a message.</div>'; return; }
+  GD.setBusy(btn, true, 'Sending…'); err.innerHTML = '';
+  GD.api.call('submitFeedback', { name: document.getElementById('cName').value, email: document.getElementById('cEmail').value, message: msg, type: 'contact' }).then(function () {
+    GD.setBusy(btn, false); document.getElementById('cf').reset(); err.innerHTML = '<div class="alert ok">Thank you! Your message has been sent.</div>';
+  }, function (er) { GD.setBusy(btn, false); err.innerHTML = '<div class="alert error">' + GD.esc(er.message) + '</div>'; });
+};
+</script>
+</body>
+</html>

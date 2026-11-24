@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard – GD TECH ACADEMY</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:24px">
+  <div class="container">
+    <div id="gate" class="center" style="padding:40px 0"><span class="spinner"></span> Checking access…</div>
+    <div id="app" hidden>
+      <h1 style="font-size:1.6rem">Admin Dashboard</h1>
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+        <button class="tab" role="tab" data-tab="users" aria-selected="false">Users</button>
+        <button class="tab" role="tab" data-tab="notes" aria-selected="false">Notes</button>
+        <button class="tab" role="tab" data-tab="ai" aria-selected="false">AI Configuration</button>
+        <button class="tab" role="tab" data-tab="website" aria-selected="false">Website</button>
+        <button class="tab" role="tab" data-tab="usage" aria-selected="false">Usage &amp; Limits</button>
+        <button class="tab" role="tab" data-tab="logs" aria-selected="false">Logs</button>
+        <button class="tab" role="tab" data-tab="data" aria-selected="false">Data</button>
+      </div>
+      <div id="pane"></div>
+    </div>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

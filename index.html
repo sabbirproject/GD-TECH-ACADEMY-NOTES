@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GD TECH ACADEMY – AI Notes Generator | Create Complete Study Notes with AI</title>
+<meta name="description" content="Enter any subject, chapter or topic and generate detailed, easy-to-understand study notes in English, Hindi, Hinglish, Bengali or Urdu. Free AI notes generator by GD TECH ACADEMY.">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GD TECH ACADEMY – AI Notes Generator">
+<meta property="og:description" content="Create complete study notes with AI in your preferred language. Learn • Understand • Practice • Grow.">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">AI POWERED</span>
+        <h1 id="heroTitle">Create Complete Study Notes with AI</h1>
+        <p class="sub" id="heroText">Enter any subject, chapter, or topic and generate detailed, easy-to-understand educational notes in your preferred language.</p>
+        <p><a class="btn lg" href="notes.html" id="ctaBtn">✦ Create Notes</a></p>
+        <p class="small muted">Free to use · Hindi, Bengali, Urdu, Hinglish &amp; English · PDF download</p>
+      </div>
+      <div class="card" aria-label="Notes generator preview">
+        <h3>What would you like to learn?</h3>
+        <form id="quickForm">
+          <div class="field"><label for="qTopic" class="sr-only">Topic</label>
+            <textarea id="qTopic" maxlength="6000" placeholder="Example: Explain Everything About Input and Output Devices."></textarea></div>
+          <div class="row two">
+            <div class="field"><label for="qLang">Language</label><select id="qLang"></select></div>
+            <div class="field"><label for="qLevel">Level</label><select id="qLevel"></select></div>
+          </div>
+          <button class="btn" style="width:100%" type="submit">✦ Generate My Notes</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <h2>Main features</h2>
+      <p class="lead">Everything you need to turn a topic into textbook-quality notes.</p>
+      <div class="grid cols-4">
+        <div class="card feature"><div class="ico">📘</div><h3>Detailed Notes</h3><p class="muted">Comprehensive chapter-wise explanations with definitions, examples, tables and diagrams.</p></div>
+        <div class="card feature"><div class="ico">🌐</div><h3>Multiple Languages</h3><p class="muted">English, Hindi, Hinglish, Bengali, Urdu and more — chosen by you.</p></div>
+        <div class="card feature"><div class="ico">📄</div><h3>PDF Downloads</h3><p class="muted">Save, print or download your notes as PDF or HTML.</p></div>
+        <div class="card feature"><div class="ico">🗂️</div><h3>My Library</h3><p class="muted">Keep, search, rename and edit all your generated notes in one place.</p></div>
+        <div class="card feature"><div class="ico">📝</div><h3>Practice &amp; MCQs</h3><p class="muted">Questions, MCQs and answer keys generated with every chapter set.</p></div>
+        <div class="card feature"><div class="ico">🎯</div><h3>Right Level</h3><p class="muted">Beginner to competitive-exam level, or let the app choose automatically.</p></div>
+        <div class="card feature"><div class="ico">📱</div><h3>Installable App</h3><p class="muted">Works on mobile and desktop like an app, with a fast offline-friendly homepage.</p></div>
+        <div class="card feature"><div class="ico">🛠️</div><h3>Admin Dashboard</h3><p class="muted">Manage content, languages, limits and AI settings without touching code.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="lead">Four simple steps.</p>
+      <ol class="steps">
+        <li><h3>Enter a topic</h3><p class="muted">Type one topic, several topics, a chapter name or paste your own text.</p></li>
+        <li><h3>Choose options</h3><p class="muted">Pick language, level, depth, and whether you want examples, MCQs and more.</p></li>
+        <li><h3>Generate</h3><p class="muted">The app plans chapters, then writes each part and saves it as it goes.</p></li>
+        <li><h3>Read, edit, download</h3><p class="muted">Study online, edit, print, or download as PDF or HTML.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="subjects">
+    <div class="container">
+      <h2>Supported subjects</h2>
+      <p class="lead">Any subject works — these are popular starting points. Tap one to begin.</p>
+      <div class="chips" id="subjectChips" style="justify-content:center"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="languages">
+    <div class="container">
+      <h2>Supported languages</h2>
+      <p class="lead">Read your notes in the language you understand best.</p>
+      <div class="chips" id="langChips" style="justify-content:center"></div>
+    </div>
+  </section>
+
+  <section class="section" id="publicWrap" hidden>
+    <div class="container">
+      <h2>Featured notes</h2>
+      <p class="lead">Notes shared by GD TECH ACADEMY teachers.</p>
+      <div class="grid cols-3" id="publicNotes"></div>
+    </div>
+  </section>
+
+  <section class="section" id="faqWrap">
+    <div class="container narrow">
+      <h2>Frequently asked questions</h2>
+      <div id="faq" style="margin-top:20px"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="academy">
+    <div class="container narrow center">
+      <h2>About GD TECH ACADEMY</h2>
+      <p id="aboutText"></p>
+      <p><a class="btn secondary" href="about.html">Learn more about us</a></p>
+    </div>
+  </section>
+</main>
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script>
+(function () {
+  var GD = window.GD;
+  function fillSelect(sel, items, def) {
+    sel.innerHTML = items.map(function (i) { return '<option value="' + GD.esc(i.code) + '"' + (i.code === def ? ' selected' : '') + '>' + GD.esc(i.label) + '</option>'; }).join('');
+  }
+  function render(cfg) {
+    var s = cfg.site;
+    document.getElementById('heroTitle').textContent = s.heroTitle;
+    document.getElementById('heroText').textContent = s.heroText;
+    document.getElementById('aboutText').textContent = s.about;
+    fillSelect(GD.$('#qLang'), cfg.languages, 'simple-english');
+    fillSelect(GD.$('#qLevel'), cfg.levels, 'auto');
+    GD.$('#subjectChips').innerHTML = s.subjects.map(function (x) { return '<a class="chip" href="notes.html?topic=' + encodeURIComponent('Explain everything about ' + x) + '" style="text-decoration:none">' + GD.esc(x) + '</a>'; }).join('');
+    GD.$('#langChips').innerHTML = cfg.languages.map(function (l) { return '<span class="chip teal">' + GD.esc(l.label) + '</span>'; }).join('');
+    GD.$('#faq').innerHTML = (s.faq || []).map(function (f) { return '<details class="faq"><summary>' + GD.esc(f.q) + '</summary><div>' + GD.esc(f.a) + '</div></details>'; }).join('') || '<p class="muted center">No questions yet.</p>';
+    if (cfg.flags && cfg.flags.maintenance) GD.$('main').insertAdjacentHTML('afterbegin', '<div class="alert warn container">The generator is under maintenance. Please check back soon.</div>');
+  }
+  GD.init({ page: 'home' }).then(function (cfg) {
+    render(cfg);
+    if (cfg.flags && cfg.flags.publicNotes && GD.api.configured() && navigator.onLine) {
+      GD.api.call('listPublicNotes', { featured: true }, { noAuth: true, timeoutMs: 20000 }).then(function (r) {
+        if (!r.notes.length) return;
+        GD.$('#publicWrap').hidden = false;
+        GD.$('#publicNotes').innerHTML = r.notes.map(function (n) {
+          return '<a class="card note-card" style="text-decoration:none;color:inherit" href="reader.html?public=' + encodeURIComponent(n.id) + '"><h3>' + GD.esc(n.title) + '</h3><div class="meta"><span class="badge">' + GD.esc(n.subject) + '</span><span class="badge">' + GD.esc(n.language) + '</span><span class="badge">' + GD.esc(n.level) + '</span></div></a>';
+        }).join('');
+      }).catch(function () { });
+    }
+  });
+  render(GD.cfg);
+  GD.$('#quickForm').onsubmit = function (e) {
+    e.preventDefault();
+    var t = GD.$('#qTopic').value.trim();
+    var q = new URLSearchParams({ topic: t, language: GD.$('#qLang').value, level: GD.$('#qLevel').value });
+    location.href = 'notes.html?' + q.toString();
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline – GD TECH ACADEMY</title>
+<meta name="description" content="You are offline.">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:title" content="Offline – GD TECH ACADEMY">
+<meta property="og:description" content="You are offline.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="icons/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:30px">
+  <div class="container narrow center" style="padding:40px 0">
+    <h1>You are offline</h1>
+    <p class="muted">The AI Notes Generator needs an internet connection to write notes, save to the cloud and download files. Pages you have opened before may still work. Please reconnect and try again.</p>
+    <p><button class="btn" onclick="location.reload()">Try again</button> <a class="btn secondary" href="index.html">Go to homepage</a></p>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script>GD.init({ page: "offline" });</script>
+</body>
+</html>

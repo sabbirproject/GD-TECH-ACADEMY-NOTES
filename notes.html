@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Notes – GD TECH ACADEMY AI Notes Generator</title>
+<meta name="description" content="Enter a topic, choose language and level, and generate detailed study notes with AI.">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+<main id="main" class="section" style="padding-top:28px">
+  <div class="container narrow">
+    <h1 style="font-size:1.8rem">Notes Generator</h1>
+    <p class="muted">Tell us what you want to learn. We plan the chapters, then write each part and save it as it finishes.</p>
+
+    <div id="notice"></div>
+
+    <form id="genForm" class="card" novalidate>
+      <div class="field">
+        <label for="topic">Topic / Subject / Chapter</label>
+        <textarea id="topic" maxlength="6000" rows="5" placeholder="Example: Explain Everything About Input and Output Devices."></textarea>
+        <div class="hint"><span id="count">0</span> / <span id="max">6000</span> characters. You can enter one topic, several topics (one per line), chapter names, or paste your own text.</div>
+      </div>
+      <div class="row two">
+        <div class="field"><label for="lang">Language</label><select id="lang"></select></div>
+        <div class="field" id="customLangWrap" hidden><label for="langCustom">Language name</label><input id="langCustom" type="text" maxlength="40" placeholder="e.g. Tamil"></div>
+        <div class="field"><label for="level">Educational level</label><select id="level"></select></div>
+        <div class="field"><label for="depth">Content depth</label><select id="depth"></select></div>
+      </div>
+      <fieldset style="border:0;padding:0;margin:0 0 16px">
+        <legend style="font-weight:600;margin-bottom:8px">Additional settings</legend>
+        <div class="switches" id="switches"></div>
+      </fieldset>
+      <div id="formErr" role="alert"></div>
+      <button class="btn lg accent" type="submit" id="genBtn">✦ Generate My Notes</button>
+      <p class="hint" id="limitHint"></p>
+    </form>
+
+    <section id="progressCard" class="card" hidden aria-live="polite" style="margin-top:18px">
+      <h2 id="pTitle" style="font-size:1.25rem">Generating your notes…</h2>
+      <p class="muted" id="pMsg">Planning chapters…</p>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pBar"><i></i></div>
+      <ul class="checklist" id="pList"></ul>
+      <div id="pActions" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <p class="hint">Please keep this page open. Each finished section is saved automatically, so you can safely continue later from My Library.</p>
+    </section>
+  </div>
+</main>
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/notes.js"></script>
+</body>
+</html>
