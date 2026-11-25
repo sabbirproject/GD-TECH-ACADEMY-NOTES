@@ -119,9 +119,9 @@
     loading();
     A('adminGetAI').then(function (c) {
       pane.innerHTML = '<div class="card"><h3>AI provider</h3><form id="aiForm">' +
-        '<div class="row two"><div class="field"><label for="aProv">Provider</label><select id="aProv"><option value="gemini"' + (c.provider === 'gemini' ? ' selected' : '') + '>Google Gemini</option><option value="openai"' + (c.provider === 'openai' ? ' selected' : '') + '>OpenAI-compatible (OpenAI, OpenRouter, Groq…)</option></select></div>' +
-        '<div class="field"><label for="aModel">Model name</label><input id="aModel" type="text" maxlength="100" value="' + E(c.model) + '"></div></div>' +
-        '<div class="field"><label for="aEnd">API endpoint</label><input id="aEnd" type="url" value="' + E(c.endpoint) + '"><div class="hint">Gemini: https://generativelanguage.googleapis.com/v1beta · OpenAI-compatible: e.g. https://api.openai.com/v1</div></div>' +
+        '<div class="row two"><div class="field"><label for="aProv">Provider</label><select id="aProv"><option value="gemini"' + (c.provider === 'gemini' ? ' selected' : '') + '>Google Gemini — generateContent (default)</option><option value="gemini-interactions"' + (c.provider === 'gemini-interactions' ? ' selected' : '') + '>Google Gemini — Interactions API (newer, optional)</option><option value="openai"' + (c.provider === 'openai' ? ' selected' : '') + '>OpenAI-compatible (OpenAI, OpenRouter, Groq…)</option></select></div>' +
+        '<div class="field"><label for="aModel">Model name</label><input id="aModel" type="text" list="modelList" maxlength="100" value="' + E(c.model) + '"><datalist id="modelList"></datalist><div class="hint"><a href="#" id="loadModels">Load available models</a> <span id="modelMsg"></span></div></div></div>' +
+        '<div class="field"><label for="aEnd">API endpoint</label><input id="aEnd" type="url" value="' + E(c.endpoint) + '"><div class="hint">Both Gemini options: https://generativelanguage.googleapis.com/v1beta · OpenAI-compatible: e.g. https://api.openai.com/v1</div></div>' +
         '<div class="field"><label for="aKey">API key</label><input id="aKey" type="password" autocomplete="off" placeholder="' + (c.hasKey ? '•••••••• saved — type a new key to replace it' : 'Paste your API key') + '"><div class="hint">Stored only in Apps Script Script Properties. It is never sent back to this page.' + (c.hasKey ? ' <a href="#" id="rmKey">Remove saved key</a>' : '') + '</div></div>' +
         '<div class="row three"><div class="field"><label for="aTemp">Temperature (0–2)</label><input id="aTemp" type="number" step="0.1" min="0" max="2" value="' + c.temperature + '"></div>' +
         '<div class="field"><label for="aTok">Max output tokens</label><input id="aTok" type="number" min="256" max="65536" value="' + c.maxOutputTokens + '"></div>' +
@@ -134,6 +134,15 @@
         var b = GD.$('button[type=submit]', this); GD.setBusy(b, true, 'Saving…');
         var d = { provider: $('#aProv').value, model: $('#aModel').value, endpoint: $('#aEnd').value, temperature: $('#aTemp').value, maxOutputTokens: $('#aTok').value, retries: $('#aRet').value, systemPrompt: $('#aSys').value, apiKey: $('#aKey').value };
         A('adminSaveAI', d).then(function () { GD.toast('AI settings saved', 'ok'); aiTab(); }, function (er) { GD.setBusy(b, false); $('#aiMsg').innerHTML = '<div class="alert error">' + E(er.message) + '</div>'; });
+      };
+      $('#loadModels').onclick = function (e) {
+        e.preventDefault();
+        $('#modelMsg').textContent = 'Asking Google…';
+        A('adminListModels', {}, { timeoutMs: 60000 }).then(function (r) {
+          $('#modelList').innerHTML = r.models.map(function (m) { return '<option value="' + E(m.id) + '">' + E(m.name) + '</option>'; }).join('');
+          $('#modelMsg').innerHTML = r.models.length ? '— ' + r.models.length + ' models found. Click the Model name box and choose one (for example a recent <b>flash</b> model). Current: <code>' + E(r.current) + '</code>' : '— none returned';
+          $('#aModel').focus(); $('#aModel').select();
+        }, function (er) { $('#modelMsg').innerHTML = '<span style="color:var(--danger)">' + E(er.message) + '</span>'; });
       };
       $('#aiTest').onclick = function () {
         var b = this; GD.setBusy(b, true, 'Testing…');
